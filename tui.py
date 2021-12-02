@@ -84,6 +84,9 @@ def menu(variant=0):
             user_input = int(input("[1] All Data\n[2] Data for Specific Country/Region"))
             if 1 <= user_input <= 2:
                 has_selected = True
+        elif variant == 4:
+            break
+
         else:
             print("Please make appropriate selection")
 
@@ -106,7 +109,7 @@ def total_records(num_records):
     """
     num_records
     for record in num_records:
-# once reletaion esatblished add code to iterete through data structure
+    # Once relation established add code to iterate through data structure
     print(f"There are {num_records} records in the data set.")
 
 
@@ -122,7 +125,7 @@ def serial_number():
 
     serial_number = int(input("Enter a serial number for a record e.g. 189"))
     return serial_number
-# need to add error loop
+    # need to add error loop
 
 def observation_dates():
     """
