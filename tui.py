@@ -84,6 +84,9 @@ def menu(variant=0):
             user_input = int(input("[1] All Data\n[2] Data for Specific Country/Region"))
             if 1 <= user_input <= 2:
                 has_selected = True
+            else:
+                print("Please make appropriate selection")
+
         elif variant == 4:
             break
 
@@ -107,9 +110,8 @@ def total_records(num_records):
     :param num_records: the total number of movies in the data set
     :return: Does not return anything
     """
+    # Unfinished----------------------------------------------
     num_records
-    for record in num_records:
-    # Once relation established add code to iterate through data structure
     print(f"There are {num_records} records in the data set.")
 
 
