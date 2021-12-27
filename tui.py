@@ -106,7 +106,7 @@ def total_records(num_records):
     """
     num_records
     for record in num_records:
-# once reletaion esatblished add code to iterete through data structure
+# Once reletaion esatblished add code to iterete through data structure
     print(f"There are {num_records} records in the data set.")
 
 
@@ -141,7 +141,7 @@ def observation_dates():
         user_dates.append(input("Entered date in the format dd/mm/yyyy\n"))
 
     return user_dates
-# GOTTA ADD FAILSAFE
+# GOTTA ADD error handling
 
 
 def display_record(record, cols=None):
