@@ -17,6 +17,7 @@ from process import *
 from visual import *
 import csv
 
+
 # Task 11: Create an empty list named 'covid_records'.
 # This will be used to store the data read from the source data file.
 covid_records = []
@@ -34,13 +35,29 @@ def run():
     # - Use the appropriate functions in the module 'tui' to display a message to indicate how many records have
     # been loaded and that the data loading operation has completed.
     # TODO: Your code here
+
     progress("loading", 0)
-# Check file path
-    with open("covid_19_data.csv") as file:
-        csv_reader = csv.reader(file)
-        next(csv_reader)
-        for record in file:
-            covid_records.append(record)
+
+    # Check file path is correct (file in subdir)
+    # OSError ref: https://docs.python.org/3/library/exceptions.html
+    # exeption syntax ref : https://stackoverflow.com/questions/28633555
+    # /how-to-handle-filenotfounderror-when-try-except-ioerror-does-not-catch-it
+
+    try:
+        with open("data/covid_19_data.csv") as file:
+            csv_reader = csv.reader(file)
+            next(csv_reader)
+            for record in file:
+                covid_records.append(record)
+    except OSError as e:
+        print(e.errno)
+
+    # DISPLAY NUMBER OF RECORDS USING TUI MODULE (ADD LINK FROM PROCESS.TY once implemented)
+
+    total_records()
+
+    progress("loading", 100)
+
 
 
     while True:
@@ -48,6 +65,8 @@ def run():
         # for the different operations that can be performed on the data (menu variant 0).
         # Assign the selected option to a suitable local variable
         # TODO: Your code here
+        menu()
+        #LOACAL VARIABLE = 0 (WHIEL TRUE?)
 
         # Task 15: Check if the user selected the option for processing data.  If so, then do the following:
         # - Use the appropriate function in the module tui to display a message to indicate that the data processing

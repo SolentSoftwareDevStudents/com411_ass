@@ -17,9 +17,9 @@ def welcome():
 
 
 def error(msg):
-    print(f"Error! '{'{msg}'}'.")
+    print(f"Error! '{msg}'.")
 
-
+# Looks like status and operation wording mixed up, test it later
 def progress(operation, value):
     status = ""
     if operation != "":
@@ -104,9 +104,7 @@ def total_records(num_records):
     :param num_records: the total number of movies in the data set
     :return: Does not return anything
     """
-    num_records
-    for record in num_records:
-# Once reletaion esatblished add code to iterete through data structure
+
     print(f"There are {num_records} records in the data set.")
 
 
@@ -122,7 +120,7 @@ def serial_number():
 
     serial_number = int(input("Enter a serial number for a record e.g. 189"))
     return serial_number
-# need to add error loop
+
 
 def observation_dates():
     """
