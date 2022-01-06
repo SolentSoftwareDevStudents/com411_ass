@@ -65,8 +65,8 @@ def run():
         # for the different operations that can be performed on the data (menu variant 0).
         # Assign the selected option to a suitable local variable
         # TODO: Your code here
-        menu()
-        #LOACAL VARIABLE = 0 (WHIEL TRUE?)
+
+        main_variant = menu()
 
         # Task 15: Check if the user selected the option for processing data.  If so, then do the following:
         # - Use the appropriate function in the module tui to display a message to indicate that the data processing
@@ -112,6 +112,30 @@ def run():
         #       - Use the appropriate function in the module 'tui' to indicate that the summary
         #       process has completed.
         # TODO: Your code here
+        if main_variant == 1:
+            progress("data processing process", 0)
+            processing_menu = menu(1)
+            if processing_menu == 1:
+                progress("record retrieval process", 0)
+                # process.py function
+                progress("record retrieval process", 100)
+            elif processing_menu == 2:
+                progress("records retrieval process", 0)
+                # progress.py function
+                #display_records()
+                progress("records retrieval process", 100)
+            elif processing_menu == 3:
+                progress("grouping process", 0)
+                # process.py function here
+                #display_records()
+                progress("grouping process", 100)
+            elif processing_menu == 4:
+                progress("summary process", 0)
+                # process.py function
+                # display_records()
+                progress("summary process", 100)
+            progress("data processing process", 100)
+
 
         # Task 21: Check if the user selected the option for visualising data.
         # If so, then do the following:
@@ -123,7 +147,26 @@ def run():
         # - Use the appropriate function in the module 'tui' to display a message to indicate that the
         # data visualisation operation has completed.
         # TODO: Your code here
-        
+
+
+        elif main_variant == 2:
+            progress("data visualisation operation", 0)
+            visualisation_menu = menu(2)
+            if visualisation_menu == 1:
+                progress("pie chart creation process", 0)
+                # visual.py function
+            progress("pie chart creation process", 100)
+            if visualisation_menu == 2:
+                progress("observations chart creation process", 0)
+                # visual.py function
+            progress("observations chart creation process", 100)
+            if visualisation_menu == 3:
+                progress("animation creation process", 0)
+                # visual.py function
+                progress("animation creation process", 100)
+            progress("data visualisation operation", 0)
+
+
         # Task 25: Check if the user selected the option for exporting data.  If so, then do the following:
         # - Use the appropriate function in the module 'tui' to retrieve the type of data to be exported.
         # - Check what option has been selected
@@ -136,16 +179,30 @@ def run():
         # abstraction and inheritance.  You should create suitable classes with appropriate methods.
         # You should use these to write the records (either all or only those for a specific country/region) to a JSON file.
         # TODO: Your code here
+        elif main_variant == 3:
+            export_menu = menu(3)
+            if export_menu == 1:
+                progress("export all process", 0)
+                #OOP
+                progress("export all process", 100)
+            elif export_menu == 2:
+                progress("specific data export process", 0)
+                #OOP
+                progress("specific data export process", 100)
+
+
 
         # Task 26: Check if the user selected the option for exiting the program.
         # If so, then break out of the loop
         # TODO: Your code here
+        elif main_variant == 4:
+            break
 
         # Task 27: If the user selected an invalid option then use the appropriate function of the
         # module tui to display an error message
         # TODO: Your code here
-
-        pass  # can remove
+        else:
+            error("Invalid selection!")
 
 
 if __name__ == "__main__":

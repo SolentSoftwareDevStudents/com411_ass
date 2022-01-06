@@ -51,44 +51,23 @@ def menu(variant=0):
     If the user enters a invalid option then a suitable error message should be displayed
     :return: nothing if invalid selection otherwise an integer for a valid selection
     """
-    # A while loop seems most appropriate here to ensure correct selection has been made in case of invalid selection
-    # Took a while to
-    has_selected = False
-    user_input = 0
 
-    while not has_selected:
+    if variant is None or variant == 0:
+        int(input("[1] Process Data\n[2] Visualise Data\n[3] Export Data\n[4] Exit"))
+        return
 
-        if variant is None or variant == 0:
-            user_input = int(input("[1] Process Data\n[2] Visualise Data\n[3] Export Data\n[4] Exit"))
-            if 1 <= user_input <= 4:
-                has_selected = True
-            else:
-                print("Please make appropriate selection")
-
-        elif variant == 1:
-            user_input = int(input("""[1] Record by Serial Number\n[2] Records by Observation Date
+    elif variant == 1:
+        int(input("""[1] Record by Serial Number\n[2] Records by Observation Date
             [3] Group Records by Country/Region\n[4] Summarise Records"""))
-            if 1 <= user_input <= 4:
-                has_selected = True
-            else:
-                print("Please make appropriate selection")
+        return
 
-        elif variant == 2:
-            user_input = int(input("[1] Country/Region Pie Chart\n[2] Observations Chart\n[3] Animated Summary"))
-            if 1 <= user_input <= 3:
-                has_selected = True
-            else:
-                print("Please make appropriate selection")
+    elif variant == 2:
+        int(input("[1] Country/Region Pie Chart\n[2] Observations Chart\n[3] Animated Summary"))
+        return
 
-        elif variant == 3:
-            user_input = int(input("[1] All Data\n[2] Data for Specific Country/Region"))
-            if 1 <= user_input <= 2:
-                has_selected = True
-        else:
-            print("Please make appropriate selection")
-
-    else:
-        return user_input
+    elif variant == 3:
+        int(input("[1] All Data\n[2] Data for Specific Country/Region"))
+        return
 
 
 def total_records(num_records):
@@ -139,7 +118,7 @@ def observation_dates():
         user_dates.append(input("Entered date in the format dd/mm/yyyy\n"))
 
     return user_dates
-# GOTTA ADD error handling
+# Error handling will be added to avoid string or invalid format input
 
 
 def display_record(record, cols=None):
