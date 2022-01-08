@@ -17,15 +17,15 @@ def welcome():
 
 
 def error(msg):
-    print(f"Error! '{msg}'.")
+    # Capitalizes first letter in string
+    print(f"Error! {msg}")
 
-# Looks like status and operation wording mixed up, test it later
 def progress(operation, value):
     status = ""
     if operation != "":
         if value == 0:
             status = "has started"
-        elif value > 0 & value < 100:
+        elif 0 < value < 100:
             status = f"is in progress ({value}% completed)"
         elif value == 100:
             status = "has completed"
@@ -33,9 +33,8 @@ def progress(operation, value):
         error("Operation in not recognized")
 
     if status != "":
-        # Capitalizes first letter in string parameter before printing
-        operation.capitalize()
-        print(f"{operation}: {status}")
+        print(f"{operation.capitalize()}: {status}")
+        print()
 
 
 def menu(variant=0):
@@ -51,27 +50,27 @@ def menu(variant=0):
     If the user enters a invalid option then a suitable error message should be displayed
     :return: nothing if invalid selection otherwise an integer for a valid selection
     """
+    option = 0
+    while option == 0:
 
-    if variant is None or variant == 0:
-        int(input("[1] Process Data\n[2] Visualise Data\n[3] Export Data\n[4] Exit"))
-        return
+        if variant is None or variant == 0:
+            option = int(input("*** MAIN MENU ***\n[1] Process Data\n[2] Visualise Data\n[3] Export Data\n[4] Exit\n"))
+            return option
 
-    elif variant == 1:
-        int(input("""[1] Record by Serial Number\n[2] Records by Observation Date
-            [3] Group Records by Country/Region\n[4] Summarise Records"""))
-        return
+        elif variant == 1:
+            option = int(input("[1] Record by Serial Number\n[2] Records by Observation Date\n[3] Group Records by Country/Region\n[4] Summarise Records\n"))
+            return option
 
-    elif variant == 2:
-        int(input("[1] Country/Region Pie Chart\n[2] Observations Chart\n[3] Animated Summary"))
-        return
+        elif variant == 2:
+            option = int(input("[1] Country/Region Pie Chart\n[2] Observations Chart\n[3] Animated Summary\n"))
+            return option
 
-    elif variant == 3:
-        int(input("[1] All Data\n[2] Data for Specific Country/Region"))
-        return
+        elif variant == 3:
+            option = int(input("[1] All Data\n[2] Data for Specific Country/Region\n"))
+            return option
 
-    else:
-        error("Invalid seslection!")
-        pass
+        else:
+            error("Invalid selection!\n")
 
 
 def total_records(num_records):
@@ -89,6 +88,7 @@ def total_records(num_records):
     """
 
     print(f"There are {num_records} records in the data set.")
+    print()
 
 
 def serial_number():
