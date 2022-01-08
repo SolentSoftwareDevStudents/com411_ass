@@ -69,6 +69,10 @@ def menu(variant=0):
         int(input("[1] All Data\n[2] Data for Specific Country/Region"))
         return
 
+    else:
+        error("Invalid seslection!")
+        pass
+
 
 def total_records(num_records):
     f"""

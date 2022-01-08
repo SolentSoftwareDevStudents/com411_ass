@@ -10,11 +10,10 @@ Note:   any user input/output should be done using the appropriate functions in 
 
 
 # Task 10: Import required modules
-
 # Ref https://stackoverflow.com/a/20753073/445131
+
 from tui import *
 from process import *
-from visual import *
 import csv
 
 
@@ -66,7 +65,7 @@ def run():
         # Assign the selected option to a suitable local variable
         # TODO: Your code here
 
-        main_variant = menu()
+        main_variant = menu(0)
 
         # Task 15: Check if the user selected the option for processing data.  If so, then do the following:
         # - Use the appropriate function in the module tui to display a message to indicate that the data processing
@@ -202,7 +201,8 @@ def run():
         # module tui to display an error message
         # TODO: Your code here
         else:
-            error("Invalid selection!")
+            error("Invalid selection!!")
+            print()
 
 
 if __name__ == "__main__":

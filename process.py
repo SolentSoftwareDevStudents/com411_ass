@@ -26,7 +26,19 @@ The required functions are as follows:
 """
 
 # TODO: Your code here
-import csv
-import sys
-import os
+from tui import *
+from main import covid_records
 
+
+# Can be improved (readability)
+def total_records():
+    for num_records, record in enumerate(covid_records):
+        return num_records
+
+
+def serial_record():
+    sno = serial_number()
+    for record in covid_records:
+        for serial in record[0]:
+            if sno == serial:
+                return record
