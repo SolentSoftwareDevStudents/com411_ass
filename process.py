@@ -26,19 +26,44 @@ The required functions are as follows:
 """
 
 # TODO: Your code here
-from tui import *
+
 from main import covid_records
+from tui import *
+from datetime import *
+import datetime
 
 
-# Can be improved (readability)
-def total_records():
-    for num_records, record in enumerate(covid_records):
-        return num_records
+def process_total_records(list):
+    num_records = len(list)
+    return num_records
 
 
-def serial_record():
-    sno = serial_number()
-    for record in covid_records:
-        for serial in record[0]:
-            if sno == serial:
-                return record
+def serial_record(list_2):
+    sno = serial_number() - 1
+    return list_2[sno]
+
+
+def process_obsrv_dates(dates):          # doesnt work yet
+
+    list_to_return = []
+    for user_date in dates:
+
+        d1, m1, y1 = [int(x) for x in user_date.split('/')]
+        date1 = (d1, m1, y1)
+
+        for record in covid_records:         # something wrong in the loop
+
+            d2, m2, y2 = [int(x) for x in record[1].split('/')]
+            date2 = (d2, m2, y2)
+
+            if date1 == date2:
+                list_to_return.append(record)
+
+    print(list_to_return)
+
+
+def process_grouped_by_region():
+    pass
+
+def process_summary():
+    pass

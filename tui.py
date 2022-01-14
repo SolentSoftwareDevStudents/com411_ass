@@ -6,6 +6,7 @@ A function may also need to format and/or structure a response e.g. return a lis
 Any errors or invalid inputs should be handled appropriately.
 Please note that you do not need to read the data file or perform any other such processing in this module.
 """
+import re
 
 
 def welcome():
@@ -18,7 +19,8 @@ def welcome():
 
 def error(msg):
     # Capitalizes first letter in string
-    print(f"Error! {msg}")
+    print(f"Error! {msg.capitalize()}")
+
 
 def progress(operation, value):
     status = ""
@@ -58,7 +60,8 @@ def menu(variant=0):
             return option
 
         elif variant == 1:
-            option = int(input("[1] Record by Serial Number\n[2] Records by Observation Date\n[3] Group Records by Country/Region\n[4] Summarise Records\n"))
+            option = int(input(
+                "[1] Record by Serial Number\n[2] Records by Observation Date\n[3] Group Records by Country/Region\n[4] Summarise Records\n"))
             return option
 
         elif variant == 2:
@@ -101,7 +104,7 @@ def serial_number():
     :return: the serial number for a record
     """
 
-    serial_number = int(input("Enter a serial number for a record e.g. 189"))
+    serial_number = int(input("Enter a serial number for a record e.g. 189\n"))
     return serial_number
 
 
@@ -117,12 +120,15 @@ def observation_dates():
     :return: a list of observation dates
     """
     user_dates = []
-
     for count in range(int(input("How many dates do you want to display?"))):
-        user_dates.append(input("Entered date in the format dd/mm/yyyy\n"))
+        date = input("Enter the date in the format dd/mm/yyyy\n")
+        try:
+            x = re.search("^([1-9]|0[1-9]|1[0-9]|2[0-9]|3[0-1])(/)([1-9]|0[1-9]|1[0-2])(/)([0-9][0-9]|19[0-9][0-9]|20[0-9][0-9])$|^([0-9][0-9]|19[0-9][0-9]|20[0-9][0-9])(/)([1-9]|0[1-9]|1[0-2])(/)([1-9]|0[1-9]|1[0-9]|2[0-9]|3[0-1])$",date)
+            user_dates.append(x.group())
+        except:
+            error("wrong format")
 
     return user_dates
-# Error handling will be added to avoid string or invalid format input
 
 
 def display_record(record, cols=None):
@@ -151,8 +157,13 @@ def display_record(record, cols=None):
     :return: Does not return anything
     """
 
-    list_to_display = [record[cols]]
-    if cols is not None or cols != 0:
+    list_to_display = []
+
+    if cols is not None and cols != 0:
+        for value in cols:
+            data = record[value - 1]
+            list_to_display.append(data)
+
         print(list_to_display)
     else:
         print(record)
@@ -183,9 +194,18 @@ def display_records(records, cols=None):
     :param cols: A list of integer values that represent column indexes
     :return: Does not return anything
     """
+
+    list_of_values = []
     list_to_display = []
-    for record in records:
-        if cols is not None or cols != 0:
-            list_to_display.append(record[cols])
-        else:
+
+    if cols is not None and cols != 0:
+        for record in records:
+            for value in cols:
+                data = records[value - 1]
+                list_of_values.append(data)
+
+        list_to_display.append(list_of_values)
+        print(list_to_display)
+    else:
+        for record in records:
             print(record)
