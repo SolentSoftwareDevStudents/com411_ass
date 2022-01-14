@@ -29,9 +29,7 @@ The required functions are as follows:
 
 from main import covid_records
 from tui import *
-
 from datetime import *
-import datetime
 
 
 def process_total_records(list):
@@ -44,7 +42,7 @@ def serial_record(list_2):
     return list_2[sno]
 
 
-def process_obsrv_dates(dates):          # doesnt work yet
+def process_obsrv_dates(dates):
 
     list_to_return = []
     for user_date in dates:
@@ -52,7 +50,7 @@ def process_obsrv_dates(dates):          # doesnt work yet
         d1, m1, y1 = [int(x) for x in user_date.split('/')]
         date1 = (d1, m1, y1)
 
-        for record in covid_records:         # something wrong in the loop
+        for record in covid_records:
 
             d2, m2, y2 = [int(x) for x in record[1].split('/')]
             date2 = (d2, m2, y2)
@@ -60,7 +58,7 @@ def process_obsrv_dates(dates):          # doesnt work yet
             if date1 == date2:
                 list_to_return.append(record)
 
-    print(list_to_return)
+    return list_to_return
 
 
 def process_grouped_by_region():

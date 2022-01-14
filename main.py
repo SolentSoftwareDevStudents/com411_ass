@@ -9,7 +9,6 @@ Note:   any user input/output should be done using the appropriate functions in 
 """
 
 # Task 10: Import required modules
-# Ref https://stackoverflow.com/a/20753073/445131
 
 import csv
 
@@ -44,9 +43,6 @@ def run():
             for record in csv_reader:
                 covid_records.append(record)
 
-    # OSError ref: https://docs.python.org/3/library/exceptions.html
-    # Exeption syntax ref: https://stackoverflow.com/questions/28633555/how-to-handle-filenotfounderror-when-try-except-ioerror-does-not-catch-it
-    # Printing error as string: https://stackoverflow.com/questions/15304934/how-to-get-the-list-of-error-numbers-errno-for-an-exception-type-in-python
     except OSError as e:
         print(f"Error: {e.strerror}!")
 
@@ -181,7 +177,6 @@ def run():
                 progress("specific data export process", 0)
                 # OOP
                 progress("specific data export process", 100)
-
 
 
         # Task 26: Check if the user selected the option for exiting the program.
