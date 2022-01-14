@@ -116,7 +116,7 @@ def run():
                 progress("record retrieval process", 100)
             elif processing_menu == 2:
                 progress("records retrieval process", 0)
-                process_obsrv_dates(observation_dates())
+                display_record(process_obsrv_dates(observation_dates()))
                 progress("records retrieval process", 100)
             elif processing_menu == 3:
                 progress("grouping process", 0)

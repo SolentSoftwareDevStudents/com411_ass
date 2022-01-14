@@ -29,6 +29,7 @@ The required functions are as follows:
 
 from main import covid_records
 from tui import *
+
 from datetime import *
 import datetime
 
